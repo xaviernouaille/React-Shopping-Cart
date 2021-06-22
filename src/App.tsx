@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, Fragment, useReducer } from "react"
+import "./App.css"
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
+import { BrowserRouter as Router } from "react-router-dom"
+import RouteWrapper from "./routes/index"
+import { Provider } from "react-redux"
+import store from "./store"
+import cartReducer, { initialState, IProduct } from "./store/reducers/cart"
 
-function App() {
+export const AppContext = createContext<{ state: IProduct[]; dispatch: any }>({
+  state: initialState,
+  dispatch: () => null,
+})
+
+const App = () => {
+  const [state, dispatch] = useReducer(cartReducer, initialState)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppContext.Provider value={{ state, dispatch }}>
+      {/* <Provider store={store}> */}
+      <Fragment>
+        <Router>
+          <Nav />
+          <RouteWrapper />
+          <Footer />
+        </Router>
+      </Fragment>
+      {/* </Provider> */}
+    </AppContext.Provider>
+  )
 }
 
-export default App;
+export default App
