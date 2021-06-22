@@ -10,6 +10,9 @@ Une boutique avec un panier réalisée avec React, TypeScript, Firebase et Tailw
 
 ## Utilisation
 
+- Creez un projet firebase, créez un .env à la raçine du projet et remplissez les informations fourni par firebase. Le BASEURL est optionnel.
+- Dans le fichier situé sous src/components/Articles.tsx se trouve un morceau de code commenté qui vous permettera, une fois décommenté, de creer automatiquement un faux produit à chaque rafraichissement sur la route /articles . Votre base de donnée firestore contiendra alors plusieurs produits qui pourront être visionner sur la page Articles.tsx, qui pourront être visionné en détail, puis ajouté au panier.
+
 ### .env
 
         REACT_APP_APIKEY=
