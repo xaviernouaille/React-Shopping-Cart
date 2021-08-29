@@ -15,6 +15,8 @@ Une boutique avec un panier réalisée avec React, TypeScript, Firebase et Tailw
 
 ### .env
 
+Ces informations sont relatives à la configuration de Firebase.
+
         REACT_APP_APIKEY=
         REACT_APP_AUTHDOMAIN=
         REACT_APP_PROJECTID=
